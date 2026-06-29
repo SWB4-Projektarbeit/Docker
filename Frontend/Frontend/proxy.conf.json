@@ -1,7 +1,0 @@
-{
-  "/api-timesy": {
-    "target": "http://localhost:8215",
-    "secure": false,
-    "changeOrigin": true
-  }
-}

@@ -4,12 +4,12 @@ services:
         env_file: ".env"
         volumes:
             - ${TEMPLATE_FOLDER}:/timesy/templates/
-        command: /bin/bash -c "mvn spring-boot:run"
+        command: /bin/bash -c "cd source && mvn spring-boot:run"
         network_mode: host
         restart: unless-stopped
     frontend:
         build: Frontend
-        command: /bin/bash -c "ng serve"
+        command: /bin/bash -c "cd source && ng serve"
         network_mode: host
         restart: unless-stopped
         depends_on:

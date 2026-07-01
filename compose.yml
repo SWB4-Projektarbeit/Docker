@@ -1,17 +1,21 @@
 services:
     backend:
-        build: Backend
+        build:
+            dockerfile: Dockerfile-Backend
         env_file: ".env"
         volumes:
             - ${TEMPLATE_FOLDER}:/timesy/templates/
         command: /bin/bash -c "cd source && mvn spring-boot:run"
         network_mode: host
         restart: unless-stopped
+        container_name: timesy-backend
     frontend:
-        build: Frontend
+        build:
+            dockerfile: Dockerfile-Frontend
         command: /bin/bash -c "cd source && ng serve"
         network_mode: host
         restart: unless-stopped
+        container_name: timesy-frontend
         depends_on:
             backend:
                 condition: service_started
